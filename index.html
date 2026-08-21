@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L&L Jewelry</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      color: #222;
+      background: #fffaf7;
+    }
+
+    /* Announcement bar */
+    .announcement {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 9px;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    /* Navigation */
+    nav {
+      height: 75px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 7%;
+      background: #fffaf7;
+      border-bottom: 1px solid #eee5df;
+    }
+
+    .logo {
+      font-size: 30px;
+      letter-spacing: 4px;
+      font-weight: normal;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #222;
+    }
+
+    .nav-links a:hover {
+      opacity: 0.55;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 620px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 20px;
+      background: #f3e8df;
+    }
+
+    .hero-content {
+      max-width: 700px;
+    }
+
+    .small-title {
+      font-family: Arial, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 12px;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      font-size: clamp(50px, 8vw, 90px);
+      font-weight: normal;
+      line-height: 0.95;
+      margin-bottom: 25px;
+    }
+
+    .hero p {
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      max-width: 520px;
+      margin: auto;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 32px;
+      padding: 15px 34px;
+      background: #222;
+      color: white;
+      text-decoration: none;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      transition: 0.25s;
+    }
+
+    .button:hover {
+      background: #555;
+    }
+
+    /* Intro */
+    .intro {
+      text-align: center;
+      padding: 90px 20px;
+    }
+
+    .intro h2 {
+      font-size: 42px;
+      font-weight: normal;
+      margin-bottom: 20px;
+    }
+
+    .intro p {
+      max-width: 600px;
+      margin: auto;
+      font-family: Arial, sans-serif;
+      line-height: 1.8;
+      color: #666;
+    }
+
+    /* Three features */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid #e7ddd6;
+      border-bottom: 1px solid #e7ddd6;
+    }
+
+    .feature {
+      text-align: center;
+      padding: 55px 25px;
+      border-right: 1px solid #e7ddd6;
+    }
+
+    .feature:last-child {
+      border-right: none;
+    }
+
+    .feature span {
+      font-size: 30px;
+    }
+
+    .feature h3 {
+      margin: 18px 0 12px;
+      font-size: 22px;
+      font-weight: normal;
+    }
+
+    .feature p {
+      font-family: Arial, sans-serif;
+      color: #777;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    /* Limited drop */
+    .drop {
+      text-align: center;
+      padding: 100px 20px;
+      background: #222;
+      color: white;
+    }
+
+    .drop h2 {
+      font-size: 48px;
+      font-weight: normal;
+      margin-bottom: 18px;
+    }
+
+    .drop p {
+      font-family: Arial, sans-serif;
+      color: #ddd;
+    }
+
+    .drop .button {
+      background: white;
+      color: #222;
+    }
+
+    /* Footer */
+    footer {
+      padding: 50px 7%;
+      text-align: center;
+      background: #fffaf7;
+    }
+
+    footer .footer-logo {
+      font-size: 26px;
+      letter-spacing: 4px;
+      margin-bottom: 15px;
+    }
+
+    footer p {
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      color: #888;
+    }
+
+    @media (max-width: 700px) {
+      nav {
+        padding: 0 5%;
+      }
+
+      .nav-links {
+        gap: 12px;
+        font-size: 11px;
+      }
+
+      .logo {
+        font-size: 23px;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      .feature {
+        border-right: none;
+        border-bottom: 1px solid #e7ddd6;
+      }
+
+      .feature:last-child {
+        border-bottom: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="announcement">
+    WELCOME TO L&L — UNIQUE JEWELRY, MADE YOUR WAY
+  </div>
+
+  <nav>
+    <div class="logo">L&L</div>
+
+    <ul class="nav-links">
+      <li><a href="#">HOME</a></li>
+      <li><a href="#">SHOP</a></li>
+      <li><a href="#">CUSTOMIZE</a></li>
+      <li><a href="#">ABOUT</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="small-title">L&L Jewelry</div>
+
+      <h1>Made to<br>be yours.</h1>
+
+      <p>
+        Unique jewelry, custom details, and limited drops
+        made for the pieces you won't find anywhere else.
+      </p>
+
+      <a href="#" class="button">SHOP NOW</a>
+    </div>
+  </section>
+
+  <section class="intro">
+    <h2>Jewelry, but make it yours.</h2>
+
+    <p>
+      At L&L, every piece is designed to feel personal.
+      Choose something from our collection or create a piece
+      that is completely your own.
+    </p>
+  </section>
+
+  <section class="features">
+
+    <div class="feature">
+      <span>✦</span>
+      <h3>Customize</h3>
+      <p>
+        Mix charms, colors and details to create your perfect piece.
+      </p>
+    </div>
+
+    <div class="feature">
+      <span>♡</span>
+      <h3>Handmade</h3>
+      <p>
+        Every piece is made with care and attention to detail.
+      </p>
+    </div>
+
+    <div class="feature">
+      <span>∞</span>
+      <h3>Limited</h3>
+      <p>
+        Small drops and unique pieces that won't last forever.
+      </p>
+    </div>
+
+  </section>
+
+  <section class="drop">
+    <h2>The next drop.</h2>
+
+    <p>
+      Something new is coming soon.
+    </p>
+
+    <a href="#" class="button">EXPLORE THE COLLECTION</a>
+  </section>
+
+  <footer>
+    <div class="footer-logo">L&L</div>
+    <p>Unique pieces. Custom details. Made for you.</p>
+  </footer>
+
+</body>
+</html>
