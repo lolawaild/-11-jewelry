@@ -7,7 +7,100 @@
   <title>L&L — Laila & Leen</title>
 
   <style>
-    * {
+   /* ===== NAVIGATION BAR ===== */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  width: 100%;
+  height: 75px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 45px;
+  box-sizing: border-box;
+
+  background: #ffffff;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.nav-left,
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #111111;
+
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+
+  transition: opacity 0.2s ease;
+}
+
+.navbar a:hover {
+  opacity: 0.55;
+}
+
+.logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
+  font-family: Georgia, serif !important;
+  font-size: 30px !important;
+  font-weight: 400 !important;
+  letter-spacing: 3px !important;
+}
+
+.cart-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+
+  font-size: 18px;
+  padding: 0;
+}
+
+.cart-btn:hover {
+  opacity: 0.55;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+  .navbar {
+    height: 65px;
+    padding: 0 18px;
+  }
+
+  .nav-left,
+  .nav-right {
+    gap: 12px;
+  }
+
+  .navbar a {
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+
+  .logo {
+    font-size: 24px !important;
+  }
+
+  .cart-btn {
+    font-size: 16px;
+  }
+} * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -506,7 +599,21 @@
 </head>
 
 <body>
+<!-- L&L NAVIGATION BAR -->
+<nav class="navbar">
+  <div class="nav-left">
+    <a href="#shop">SHOP</a>
+    <a href="#custom">CUSTOM</a>
+  </div>
 
+  <a href="#" class="logo">L&L</a>
+
+  <div class="nav-right">
+    <a href="#about">ABOUT</a>
+    <a href="#contact">CONTACT</a>
+    <button class="cart-btn" onclick="openCart()">🛍</button>
+  </div>
+</nav>
   <!-- NAVIGATION -->
   <nav>
 
