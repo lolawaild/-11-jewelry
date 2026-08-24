@@ -1,1209 +1,186 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>L&L — Laila & Leen</title>
-
-  <style>
-    :root {
-      --pink: #f8dce8;
-      --pink-soft: #fff4f8;
-      --purple: #e9ddf5;
-      --purple-soft: #f7f0fb;
-      --navy: #17233f;
-      --navy-soft: #2a3654;
-      --gold: #d8b34d;
-      --gold-light: #f7e7a2;
-      --cream: #fffaf5;
-      --white: #ffffff;
-      --muted: #6d7180;
-      --border: rgba(23, 35, 63, 0.10);
-      --shadow: 0 18px 50px rgba(23, 35, 63, 0.08);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: var(--cream);
-      color: var(--navy);
-      font-family: Arial, Helvetica, sans-serif;
-      overflow-x: hidden;
-    }
-
-    a {
-      color: inherit;
-    }
-
-    button,
-    input,
-    textarea,
-    select {
-      font: inherit;
-    }
-
-    /* ===== GOLD GLITTER ===== */
-
-    .gold-text {
-      background: linear-gradient(
-        110deg,
-        #a77d21 0%,
-        #f8e7a0 18%,
-        #c59a35 34%,
-        #fff1ad 50%,
-        #b48628 67%,
-        #f6dc7b 84%,
-        #a77d21 100%
-      );
-      background-size: 250% auto;
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      animation: goldShimmer 4s linear infinite;
-    }
-
-    .gold-line {
-      width: 180px;
-      height: 2px;
-      margin: 0 auto 25px;
-      background: linear-gradient(
-        90deg,
-        transparent,
-        var(--gold),
-        var(--gold-light),
-        var(--gold),
-        transparent
-      );
-      box-shadow: 0 0 10px rgba(216, 179, 77, 0.35);
-    }
-
-    @keyframes goldShimmer {
-      to {
-        background-position: 250% center;
-      }
-    }
-
-    /* ===== NAVIGATION ===== */
-
-    .navbar {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      width: 100%;
-      min-height: 76px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 5%;
-      background: rgba(255, 250, 245, 0.94);
-      border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(14px);
-    }
-
-    .nav-left,
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-    }
-
-    .navbar a {
-      text-decoration: none;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 2px;
-      transition: 0.25s ease;
-    }
-
-    .nav-link:hover {
-      color: var(--gold);
-      transform: translateY(-1px);
-    }
-
-    .logo {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      font-family: Georgia, serif;
-      font-size: 30px;
-      font-weight: normal;
-      letter-spacing: 5px;
-      text-decoration: none;
-    }
-
-    .cart-button {
-      border: 0;
-      background: transparent;
-      color: var(--navy);
-      cursor: pointer;
-      font-size: 18px;
-      padding: 5px;
-      transition: 0.25s ease;
-    }
-
-    .cart-button:hover {
-      color: var(--gold);
-      transform: scale(1.08);
-    }
-
-    .cart-count {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 17px;
-      height: 17px;
-      padding: 0 4px;
-      margin-left: 3px;
-      border-radius: 50%;
-      background: var(--navy);
-      color: white;
-      font-size: 9px;
-      vertical-align: top;
-    }
-
-    /* ===== HERO ===== */
-
-    .hero {
-      min-height: calc(100vh - 76px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 80px 20px 100px;
-      position: relative;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 12% 20%, rgba(248, 220, 232, 0.75), transparent 29%),
-        radial-gradient(circle at 88% 22%, rgba(233, 221, 245, 0.78), transparent 31%),
-        radial-gradient(circle at 50% 100%, rgba(248, 231, 162, 0.14), transparent 28%),
-        var(--cream);
-    }
-
-    .hero::before,
-    .hero::after {
-      content: "✦";
-      position: absolute;
-      color: var(--gold);
-      opacity: 0.65;
-      text-shadow: 0 0 12px rgba(216, 179, 77, 0.4);
-    }
-
-    .hero::before {
-      left: 13%;
-      top: 25%;
-      font-size: 25px;
-    }
-
-    .hero::after {
-      right: 14%;
-      bottom: 25%;
-      font-size: 19px;
-    }
-
-    .hero-content {
-      max-width: 900px;
-    }
-
-    .hero h1 {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(85px, 15vw, 180px);
-      font-weight: normal;
-      letter-spacing: 7px;
-      line-height: 0.9;
-      margin-bottom: 18px;
-    }
-
-    .names {
-      font-family: Georgia, serif;
-      font-size: 20px;
-      letter-spacing: 5px;
-      color: #8b6f87;
-      margin-bottom: 27px;
-    }
-
-    .tagline {
-      font-size: 13px;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      color: var(--navy);
-      margin-bottom: 38px;
-    }
-
-    .primary-button,
-    .outline-button {
-      display: inline-block;
-      padding: 15px 38px;
-      border: 1px solid var(--navy);
-      text-decoration: none;
-      font-size: 11px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      transition: 0.3s ease;
-      cursor: pointer;
-    }
-
-    .primary-button {
-      background: var(--navy);
-      color: white;
-    }
-
-    .primary-button:hover {
-      background: var(--gold);
-      border-color: var(--gold);
-      color: var(--navy);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(216, 179, 77, 0.2);
-    }
-
-    .outline-button {
-      background: transparent;
-      color: var(--navy);
-    }
-
-    .outline-button:hover {
-      background: var(--navy);
-      color: white;
-      transform: translateY(-2px);
-    }
-
-    /* ===== GENERAL ===== */
-
-    section {
-      scroll-margin-top: 90px;
-    }
-
-    .section-heading {
-      text-align: center;
-      padding: 100px 20px 45px;
-    }
-
-    .section-heading .mini {
-      font-size: 10px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: #9a7d96;
-      margin-bottom: 13px;
-    }
-
-    .section-heading h2 {
-      font-family: Georgia, serif;
-      font-weight: normal;
-      font-size: clamp(40px, 6vw, 64px);
-    }
-
-    .section-heading p {
-      max-width: 600px;
-      margin: 18px auto 0;
-      color: var(--muted);
-      line-height: 1.8;
-      font-size: 14px;
-    }
-
-    /* ===== SHOP ===== */
-
-    #shop {
-      background:
-        radial-gradient(circle at 5% 30%, rgba(248, 220, 232, 0.38), transparent 25%),
-        var(--cream);
-      padding-bottom: 100px;
-    }
-
-    .product-grid {
-      width: 88%;
-      max-width: 1250px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 22px;
-    }
-
-    .product-card {
-      background: white;
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      transition: 0.3s ease;
-    }
-
-    .product-card:hover {
-      transform: translateY(-7px);
-    }
-
-    .product-image {
-      height: 280px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-      background: linear-gradient(145deg, var(--pink), var(--purple));
-    }
-
-    .product-image:nth-child(odd) {
-      background: linear-gradient(145deg, var(--purple), var(--pink));
-    }
-
-    .jewelry-symbol {
-      font-size: 76px;
-      color: var(--gold);
-      text-shadow:
-        0 0 5px #fff3b0,
-        0 0 15px rgba(216, 179, 77, 0.65),
-        0 0 30px rgba(216, 179, 77, 0.3);
-      animation: floatJewelry 3s ease-in-out infinite;
-    }
-
-    @keyframes floatJewelry {
-      50% {
-        transform: translateY(-7px) rotate(2deg);
-      }
-    }
-
-    .product-info {
-      padding: 22px;
-    }
-
-    .product-info h3 {
-      font-family: Georgia, serif;
-      font-size: 25px;
-      font-weight: normal;
-      margin-bottom: 7px;
-    }
-
-    .product-info p {
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.6;
-      margin-bottom: 15px;
-    }
-
-    .price {
-      font-weight: bold;
-      font-size: 13px;
-      margin-bottom: 17px;
-    }
-
-    .add-button {
-      width: 100%;
-      border: 1px solid var(--navy);
-      background: transparent;
-      color: var(--navy);
-      padding: 12px;
-      cursor: pointer;
-      font-size: 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      transition: 0.25s ease;
-    }
-
-    .add-button:hover {
-      background: var(--navy);
-      color: white;
-    }
-
-    /* ===== FEATURE CARDS ===== */
-
-    .features {
-      padding-bottom: 100px;
-      background: var(--purple-soft);
-    }
-
-    .feature-grid {
-      width: 86%;
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .feature-card {
-      min-height: 390px;
-      padding: 45px 32px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      position: relative;
-      overflow: hidden;
-      border: 1px solid rgba(23, 35, 63, 0.08);
-      transition: 0.35s ease;
-    }
-
-    .feature-card:nth-child(1) {
-      background: linear-gradient(145deg, #f9dce8, #f0dff4);
-    }
-
-    .feature-card:nth-child(2) {
-      background: linear-gradient(145deg, #e9e0f5, #f6d8e6);
-    }
-
-    .feature-card:nth-child(3) {
-      background: linear-gradient(145deg, #f7e6d2, #f0dff0);
-    }
-
-    .feature-card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow);
-    }
-
-    .card-number {
-      position: absolute;
-      top: 25px;
-      right: 28px;
-      font-family: Georgia, serif;
-      font-size: 20px;
-      color: rgba(23, 35, 63, 0.45);
-    }
-
-    .card-icon {
-      position: absolute;
-      top: 34px;
-      left: 32px;
-      font-size: 38px;
-      color: var(--gold);
-      text-shadow: 0 0 10px rgba(216, 179, 77, 0.5);
-    }
-
-    .feature-card h3 {
-      font-family: Georgia, serif;
-      font-size: 34px;
-      font-weight: normal;
-      margin-bottom: 13px;
-    }
-
-    .feature-card p {
-      font-size: 13px;
-      line-height: 1.8;
-      color: #4c5366;
-      max-width: 280px;
-    }
-
-    .card-link {
-      margin-top: 24px;
-      text-decoration: none;
-      font-size: 11px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-    }
-
-    /* ===== CUSTOM ===== */
-
-    .custom-section {
-      padding-bottom: 110px;
-      background:
-        radial-gradient(circle at 90% 30%, rgba(248, 220, 232, 0.55), transparent 25%),
-        var(--cream);
-    }
-
-    .custom-box {
-      width: 86%;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 55px;
-      background: linear-gradient(135deg, var(--pink-soft), var(--purple-soft));
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 50px;
-      align-items: center;
-    }
-
-    .custom-copy h3 {
-      font-family: Georgia, serif;
-      font-size: clamp(35px, 5vw, 58px);
-      font-weight: normal;
-      margin-bottom: 18px;
-    }
-
-    .custom-copy p {
-      color: var(--muted);
-      line-height: 1.9;
-      font-size: 14px;
-      margin-bottom: 25px;
-    }
-
-    .custom-form {
-      display: grid;
-      gap: 13px;
-    }
-
-    .custom-form input,
-    .custom-form select,
-    .custom-form textarea {
-      width: 100%;
-      padding: 14px;
-      border: 1px solid rgba(23, 35, 63, 0.16);
-      background: rgba(255,255,255,0.72);
-      color: var(--navy);
-      outline: none;
-    }
-
-    .custom-form textarea {
-      min-height: 115px;
-      resize: vertical;
-    }
-
-    .custom-form input:focus,
-    .custom-form select:focus,
-    .custom-form textarea:focus {
-      border-color: var(--gold);
-      box-shadow: 0 0 0 3px rgba(216, 179, 77, 0.10);
-    }
-
-    /* ===== STORY ===== */
-
-    .story {
-      background: var(--navy);
-      color: var(--cream);
-      padding: 115px 10%;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .story::before,
-    .story::after {
-      content: "✦";
-      position: absolute;
-      color: var(--gold-light);
-      opacity: 0.75;
-      text-shadow: 0 0 12px rgba(216, 179, 77, 0.6);
-    }
-
-    .story::before {
-      top: 35px;
-      left: 12%;
-      font-size: 30px;
-    }
-
-    .story::after {
-      bottom: 35px;
-      right: 12%;
-      font-size: 24px;
-    }
-
-    .story h2 {
-      font-family: Georgia, serif;
-      font-size: clamp(40px, 7vw, 75px);
-      font-weight: normal;
-      margin-bottom: 28px;
-    }
-
-    .story p {
-      max-width: 760px;
-      margin: 0 auto 30px;
-      line-height: 2;
-      font-size: 14px;
-      color: #eee8ef;
-    }
-
-    /* ===== FAQ ===== */
-
-    .faq-section {
-      padding-bottom: 105px;
-      background: var(--purple-soft);
-    }
-
-    .faq-container {
-      width: 82%;
-      max-width: 850px;
-      margin: 0 auto;
-    }
-
-    details {
-      border-bottom: 1px solid #d9cdd8;
-      padding: 24px 5px;
-    }
-
-    summary {
-      cursor: pointer;
-      list-style: none;
-      font-family: Georgia, serif;
-      font-size: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    summary::-webkit-details-marker {
-      display: none;
-    }
-
-    summary::after {
-      content: "+";
-      font-family: Arial, sans-serif;
-      font-size: 24px;
-      color: var(--gold);
-    }
-
-    details[open] summary::after {
-      content: "−";
-    }
-
-    details p {
-      padding-top: 18px;
-      color: #5c6070;
-      line-height: 1.8;
-      font-size: 14px;
-      max-width: 700px;
-    }
-
-    /* ===== CONTACT ===== */
-
-    .contact-section {
-      padding-bottom: 110px;
-      background: var(--cream);
-    }
-
-    .contact-grid {
-      width: 86%;
-      max-width: 1050px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .contact-card {
-      padding: 35px 25px;
-      text-align: center;
-      background: white;
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-    }
-
-    .contact-card .icon {
-      font-size: 30px;
-      color: var(--gold);
-      margin-bottom: 15px;
-    }
-
-    .contact-card h3 {
-      font-family: Georgia, serif;
-      font-size: 25px;
-      font-weight: normal;
-      margin-bottom: 9px;
-    }
-
-    .contact-card p,
-    .contact-card a {
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.7;
-      text-decoration: none;
-    }
-
-    .contact-card a:hover {
-      color: var(--gold);
-    }
-
-    /* ===== CART ===== */
-
-    .cart-section {
-      padding-bottom: 110px;
-      background: var(--pink-soft);
-    }
-
-    .cart-container {
-      width: 86%;
-      max-width: 900px;
-      margin: 0 auto;
-      background: white;
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-      padding: 30px;
-    }
-
-    .cart-empty {
-      text-align: center;
-      padding: 45px 20px;
-      color: var(--muted);
-    }
-
-    .cart-item {
-      display: grid;
-      grid-template-columns: 1fr auto auto;
-      gap: 20px;
-      align-items: center;
-      padding: 18px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .cart-item h4 {
-      font-family: Georgia, serif;
-      font-size: 20px;
-      font-weight: normal;
-    }
-
-    .cart-item small {
-      color: var(--muted);
-    }
-
-    .remove-button {
-      border: 0;
-      background: transparent;
-      color: #9a7d96;
-      cursor: pointer;
-      font-size: 11px;
-      letter-spacing: 1px;
-    }
-
-    .cart-total {
-      display: flex;
-      justify-content: space-between;
-      padding-top: 25px;
-      font-family: Georgia, serif;
-      font-size: 25px;
-    }
-
-    /* ===== FOOTER ===== */
-
-    footer {
-      background: var(--cream);
-      text-align: center;
-      padding: 75px 20px 35px;
-    }
-
-    .footer-logo {
-      font-family: Georgia, serif;
-      font-size: 42px;
-      letter-spacing: 7px;
-      margin-bottom: 13px;
-    }
-
-    .footer-names {
-      color: #8b6f87;
-      letter-spacing: 4px;
-      font-size: 12px;
-      margin-bottom: 38px;
-    }
-
-    .social-title {
-      font-size: 10px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: #8b6f87;
-      margin-bottom: 18px;
-    }
-
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      margin-bottom: 55px;
-    }
-
-    .social-links a {
-      text-decoration: none;
-      font-size: 12px;
-      letter-spacing: 2px;
-      transition: 0.25s ease;
-    }
-
-    .social-links a:hover {
-      color: var(--gold);
-    }
-
-    .copyright {
-      border-top: 1px solid var(--border);
-      padding-top: 25px;
-      font-size: 10px;
-      letter-spacing: 2px;
-      color: #9a94a0;
-    }
-
-    /* ===== MOBILE ===== */
-
-    @media (max-width: 850px) {
-      .product-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .feature-grid,
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .custom-box {
-        grid-template-columns: 1fr;
-        padding: 35px 25px;
-      }
-    }
-
-    @media (max-width: 650px) {
-      .navbar {
-        min-height: 65px;
-        padding: 0 18px;
-      }
-
-      .nav-left,
-      .nav-right {
-        gap: 10px;
-      }
-
-      .navbar .nav-link {
-        font-size: 8px;
-        letter-spacing: 1px;
-      }
-
-      .logo {
-        font-size: 24px;
-      }
-
-      .hero {
-        min-height: 80vh;
-        padding: 65px 20px 80px;
-      }
-
-      .hero h1 {
-        font-size: 78px;
-        letter-spacing: 3px;
-      }
-
-      .names {
-        font-size: 15px;
-        letter-spacing: 3px;
-      }
-
-      .tagline {
-        font-size: 10px;
-        letter-spacing: 3px;
-      }
-
-      .product-grid {
-        grid-template-columns: 1fr;
-        width: 88%;
-      }
-
-      .product-image {
-        height: 300px;
-      }
-
-      .feature-grid {
-        width: 90%;
-      }
-
-      .feature-card {
-        min-height: 330px;
-      }
-
-      .faq-container {
-        width: 88%;
-      }
-
-      summary {
-        font-size: 18px;
-      }
-
-      .cart-container {
-        width: 90%;
-        padding: 20px;
-      }
-
-      .cart-item {
-        grid-template-columns: 1fr auto;
-      }
-
-      .cart-item .remove-button {
-        grid-column: 2;
-        grid-row: 1;
-      }
-
-      .social-links {
-        flex-direction: column;
-        gap: 18px;
-      }
-    }
-  </style>
-</head>
-
-<body>
-
-  <!-- ===== NAVIGATION ===== -->
-  <nav class="navbar">
-    <div class="nav-left">
-      <a class="nav-link" href="#shop">SHOP</a>
-      <a class="nav-link" href="#custom">CUSTOM</a>
-    </div>
-
-    <a href="#home" class="logo gold-text">L&L</a>
-
-    <div class="nav-right">
-      <a class="nav-link" href="#about">ABOUT</a>
-      <a class="nav-link" href="#contact">CONTACT</a>
-      <button class="cart-button" onclick="document.querySelector('#cart').scrollIntoView()">
-        🛒 <span class="cart-count" id="cartCount">0</span>
-      </button>
-    </div>
-  </nav>
-
-  <main>
-
-    <!-- ===== HOME ===== -->
-    <section class="hero" id="home">
-      <div class="hero-content">
-        <h1 class="gold-text">L&L</h1>
-
-        <div class="names">Laila and Leen</div>
-
-        <div class="gold-line"></div>
-
-        <div class="tagline">Made to be yours.</div>
-
-        <a href="#shop" class="primary-button">Shop Now</a>
-      </div>
-    </section>
-
-
-
-
-
-
-   
-    <!-- ===== CUSTOM ===== -->
-    <section class="custom-section" id="custom">
-      <div class="section-heading">
-        <div class="mini">Made for you</div>
-        <h2>Create your piece.</h2>
-        <p>Tell us what you have in mind and we'll use your ideas as the starting point.</p>
-      </div>
-
-      <div class="custom-box">
-        <div class="custom-copy">
-          <h3>Your idea.<br><span class="gold-text">Your jewelry.</span></h3>
-          <p>
-            Choose the type of piece you want, tell us your preferred style,
-            and add any special details. This form is a base for the custom-order
-            system and can be changed later.
-          </p>
-          <a href="#contact" class="outline-button">Questions?</a>
-        </div>
-
-        <form class="custom-form" onsubmit="submitCustom(event)">
-          <input type="text" placeholder="Your name" required>
-          <select required>
-            <option value="">Choose a piece</option>
-            <option>Necklace</option>
-            <option>Bracelet</option>
-            <option>Ring</option>
-            <option>Earrings</option>
-            <option>Other</option>
-          </select>
-          <input type="text" placeholder="Preferred colors / details">
-          <textarea placeholder="Tell us about your idea..." required></textarea>
-          <button class="primary-button" type="submit">Send Request</button>
-        </form>
-      </div>
-    </section>
-
-    <!-- ===== ABOUT ===== -->
-    <section class="story" id="about">
-      <h2>Make it yours.</h2>
-      <p>
-        L&L is about creating jewelry that feels personal. Pieces designed
-        with little details that make them feel like they were made just for you.
-        From customizable pieces to limited drops and carefully created
-        collections, every detail is chosen to make your jewelry feel special,
-        individual, and completely yours.
-      </p>
-      <p>
-        Laila and Leen created L&L to bring together simple designs,
-        unique ideas, and pieces you won't find anywhere else.
-      </p>
-      <a href="#shop" class="outline-button">Explore L&L</a>
-    </section>
-
-    <!-- ===== FAQ ===== -->
-    <section class="faq-section" id="faqs">
-      <div class="section-heading">
-        <div class="mini">Need to know?</div>
-        <h2>FAQs</h2>
-      </div>
-
-      <div class="faq-container">
-
-        <details>
-          <summary>Are L&L pieces customizable?</summary>
-          <p>Yes! Our customizable pieces are designed so you can choose details that make them feel like your own.</p>
-        </details>
-
-        <details>
-          <summary>Will limited drops come back?</summary>
-          <p>Limited drops are released in small quantities, so once a drop sells out, it may not return.</p>
-        </details>
-
-        <details>
-          <summary>Where can I see new releases?</summary>
-          <p>Follow our Instagram and TikTok for new drops, updates, behind-the-scenes moments, and more.</p>
-        </details>
-
-        <details>
-          <summary>How do I contact L&L?</summary>
-          <p>You can reach out through our social media pages. More contact options can be added later.</p>
-        </details>
-
-        <details>
-          <summary>How does the shopping cart work?</summary>
-          <p>Add products to your cart from the Shop section. Your items and total will appear in the Cart section below.</p>
-        </details>
-
-      </div>
-    </section>
-
-    <!-- ===== CONTACT ===== -->
-    <section class="contact-section" id="contact">
-      <div class="section-heading">
-        <div class="mini">Let's talk</div>
-        <h2>Contact L&L.</h2>
-        <p>Follow us or reach out with questions, ideas, and custom requests.</p>
-      </div>
-
-      <div class="contact-grid">
-
-        <div class="contact-card">
-          <div class="icon">◎</div>
-          <h3>Instagram</h3>
-          <p><a href="https://www.instagram.com/lailaandleenjewelry/" target="_blank">Follow @lailaandleenjewelry</a></p>
-        </div>
-
-        <div class="contact-card">
-          <div class="icon">♪</div>
-          <h3>TikTok</h3>
-          <p><a href="https://www.tiktok.com/@ll.jewelry5" target="_blank">Follow @ll.jewelry5</a></p>
-        </div>
-
-        <div class="contact-card">
-          <div class="icon">✉</div>
-          <h3>Custom</h3>
-          <p>Use the custom form above to tell us what you want to create.</p>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ===== CART ===== -->
-    <section class="cart-section" id="cart">
-      <div class="section-heading">
-        <div class="mini">Your picks</div>
-        <h2>Shopping Cart.</h2>
-      </div>
-
-      <div class="cart-container">
-        <div id="cartItems">
-          <div class="cart-empty">Your cart is empty ✦</div>
-        </div>
-
-        <div class="cart-total">
-          <span>Total</span>
-          <span id="cartTotal">EGP 0</span>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ===== FOOTER ===== -->
-  <footer>
-    <div class="footer-logo gold-text">L&L</div>
-    <div class="footer-names">Laila and Leen</div>
-
-    <div class="social-title">Follow L&L</div>
-
-    <div class="social-links">
-      <a href="https://www.instagram.com/lailaandleenjewelry/" target="_blank">Instagram</a>
-      <a href="https://www.tiktok.com/@ll.jewelry5" target="_blank">TikTok</a>
-      <a href="#shop">Shop</a>
-      <a href="#custom">Custom</a>
-    </div>
-
-    <div class="copyright">
-      © 2026 L&L. Made with love by Laila & Leen.
-    </div>
-  </footer>
-
-  <script>
-    let cart = [];
-
-    function addToCart(name, price) {
-      const existing = cart.find(item => item.name === name);
-
-      if (existing) {
-        existing.quantity++;
-      } else {
-        cart.push({
-          name: name,
-          price: price,
-          quantity: 1
-        });
-      }
-
-      updateCart();
-
-      document.querySelector("#cart").scrollIntoView({
-        behavior: "smooth"
-      });
-    }
-
-    function removeFromCart(index) {
-      cart.splice(index, 1);
-      updateCart();
-    }
-
-    function updateCart() {
-      const cartItems = document.getElementById("cartItems");
-      const cartCount = document.getElementById("cartCount");
-      const cartTotal = document.getElementById("cartTotal");
-
-      let totalItems = 0;
-      let totalPrice = 0;
-
-      cart.forEach(item => {
-        totalItems += item.quantity;
-        totalPrice += item.price * item.quantity;
-      });
-
-      cartCount.textContent = totalItems;
-      cartTotal.textContent = "EGP " + totalPrice;
-
-      if (cart.length === 0) {
-        cartItems.innerHTML =
-          '<div class="cart-empty">Your cart is empty ✦</div>';
-        return;
-      }
-
-      cartItems.innerHTML = cart.map((item, index) => `
-        <div class="cart-item">
-          <div>
-            <h4>${item.name}</h4>
-            <small>Quantity: ${item.quantity}</small>
-          </div>
-
-          <strong>EGP ${item.price * item.quantity}</strong>
-
-          <button class="remove-button" onclick="removeFromCart(${index})">
-            REMOVE
-          </button>
-        </div>
-      `).join("");
-    }
-
-    function submitCustom(event) {
-      event.preventDefault();
-      alert("Your custom request has been saved as a demo! ✨ We can connect this to real orders later.");
-      event.target.reset();
-    }
-
-    updateCart();
-  </script>
-
-</body>
-</html>
+PERFECT. 💗 We have the exact filenames, so we can connect everything without creating anything new.
+
+Your files are:
+
+index.html = homepage
+custom.html = Customize
+limited-drops.html = Limited Drops
+collections.html = Collections
+cart.html = Shopping Cart
+Do these exact changes to index.html
+
+1. Delete the whole Shop section starting at:
+
+<!-- ===== SHOP ===== -->
+
+and ending after the Little Sparkle product card/section.
+
+2. Delete the whole section starting:
+
+<!-- ===== FEATURE COLLECTIONS ===== -->
+
+and ending after:
+
+</section>
+
+This removes Customize / Limited Drops / Collections cards from the homepage, which we're replacing with links to your separate pages.
+
+3. Delete the whole Custom section starting:
+
+<!-- ===== CUSTOM ===== -->
+
+through its closing </section>.
+
+4. Delete this FAQ:
+
+<details>
+  <summary>How does the shopping cart work?</summary>
+  <p>Add products to your cart from the Shop section. Your items and total will appear in the Cart section below.</p>
+</details>
+
+5. Delete the entire homepage Cart section starting:
+
+<!-- ===== CART ===== -->
+
+through its </section>.
+
+6. Replace your navigation with this:
+
+<nav class="navbar">
+  <div class="nav-left">
+    <a class="nav-link" href="collections.html">COLLECTIONS</a>
+    <a class="nav-link" href="custom.html">CUSTOMIZE</a>
+  </div>
+
+  <a href="index.html" class="logo gold-text">L&L</a>
+
+  <div class="nav-right">
+    <a class="nav-link" href="limited-drops.html">LIMITED DROPS</a>
+
+    <button class="cart-button" onclick="openCart()">
+      🛒 <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+</nav>
+7. Replace your footer links
+
+Find:
+
+<div class="social-links">
+  <a href="https://www.instagram.com/lailaandleenjewelry/" target="_blank">Instagram</a>
+  <a href="https://www.tiktok.com/@ll.jewelry5" target="_blank">TikTok</a> 
+  <a href="#shop">Shop</a> 
+  <a href="#custom">Custom</a> 
+</div>
+
+and replace it with:
+
+<div class="social-links">
+  <a href="https://www.instagram.com/lailaandleenjewelry/" target="_blank">Instagram</a>
+  <a href="https://www.tiktok.com/@ll.jewelry5" target="_blank">TikTok</a>
+</div>
+🛒 About the cart sidebar
+
+Since you already have cart.html, we shouldn't duplicate the cart system inside index.html.
+
+Instead, we'll make the 🛒 button open a sidebar containing your cart page.
+
+Add this immediately before </body>:
+
+<!-- CART SIDEBAR -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+
+<aside class="cart-sidebar" id="cartSidebar">
+  <div class="cart-sidebar-header">
+    <h2>Your Cart</h2>
+    <button onclick="closeCart()">×</button>
+  </div>
+
+  <iframe src="cart.html" class="cart-frame"></iframe>
+</aside>
+
+Then add this inside your <style>:
+
+/* ===== CART SIDEBAR ===== */
+
+.cart-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(23, 35, 63, 0.35);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s ease;
+  z-index: 1999;
+}
+
+.cart-sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: min(430px, 92vw);
+  height: 100vh;
+  background: var(--cream);
+  z-index: 2000;
+  transform: translateX(100%);
+  transition: 0.35s ease;
+  box-shadow: -15px 0 45px rgba(23, 35, 63, 0.15);
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-sidebar.open {
+  transform: translateX(0);
+}
+
+.cart-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.cart-sidebar-header {
+  height: 76px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+}
+
+.cart-sidebar-header h2 {
+  font-family: Georgia, serif;
+  font-weight: normal;
+  font-size: 28px;
+}
+
+.cart-sidebar-header button {
+  border: 0;
+  background: transparent;
+  font-size: 30px;
+  color: var(--navy);
+  cursor: pointer;
+}
+
+.cart-frame {
+  width: 100%;
+  flex: 1;
+  border: 0;
+}
+
+And add this inside your <script>:
+
+function openCart() {
+  document.getElementById("cartSidebar").classList.add("open");
+  document.getElementById("cartOverlay").classList.add("open");
+}
+
+function closeCart() {
+  document.getElementById("cartSidebar").classList.remove("open");
+  document.getElementById("cartOverlay").classList.remove("open");
+}
+⚠️ One thing before you save
+
+There's a better way to do the sidebar if your cart.html already has its own cart JavaScript, because an iframe can make the cart data separate from the homepage.
+
+So don't paste the cart-sidebar code yet.
+
+Send me your cart.html code next. I'll make sure the sidebar and cart actually work together instead of giving you something that looks right but breaks the cart.
