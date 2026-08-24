@@ -631,7 +631,100 @@
         flex-direction: column;
         gap: 18px;
       }
-    }
+    }/* ===== L&L FEATURES ===== */
+
+.features {
+  padding-bottom: 100px;
+  background: var(--purple-soft);
+}
+
+.feature-grid {
+  width: 86%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.feature-card {
+  min-height: 390px;
+  padding: 45px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(23, 35, 63, 0.08);
+  transition: 0.35s ease;
+}
+
+.feature-card:nth-child(1) {
+  background: linear-gradient(145deg, #f9dce8, #f0dff4);
+}
+
+.feature-card:nth-child(2) {
+  background: linear-gradient(145deg, #e9e0f5, #f6d8e6);
+}
+
+.feature-card:nth-child(3) {
+  background: linear-gradient(145deg, #f7e6d2, #f0dff0);
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow);
+}
+
+.card-number {
+  position: absolute;
+  top: 25px;
+  right: 28px;
+  font-family: Georgia, serif;
+  font-size: 20px;
+  color: rgba(23, 35, 63, 0.45);
+}
+
+.card-icon {
+  position: absolute;
+  top: 34px;
+  left: 32px;
+  font-size: 38px;
+  color: var(--gold);
+  text-shadow: 0 0 10px rgba(216, 179, 77, 0.5);
+}
+
+.feature-card h3 {
+  font-family: Georgia, serif;
+  font-size: 34px;
+  font-weight: normal;
+  margin-bottom: 13px;
+}
+
+.feature-card p {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #4c5366;
+  max-width: 280px;
+}
+
+.card-link {
+  margin-top: 24px;
+  text-decoration: none;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.card-link:hover {
+  color: var(--gold);
+}
+
+@media (max-width: 850px) {
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+}
   </style>
 </head>
 
@@ -684,7 +777,75 @@
       </div>
 
     </section>
+<!-- ===== L&L FEATURES ===== -->
 
+<section class="features">
+
+  <div class="section-heading">
+    <div class="mini">The L&L Experience</div>
+    <h2>Find what feels like you.</h2>
+  </div>
+
+  <div class="feature-grid">
+
+    <!-- CUSTOMIZE -->
+    <div class="feature-card">
+      <div class="card-icon">✦</div>
+      <div class="card-number">01</div>
+
+      <h3>Customize</h3>
+
+      <p>
+        Create something that feels completely yours.
+        Choose your details, your style, and the little
+        things that make your piece special.
+      </p>
+
+      <a href="custom.html" class="card-link">
+        Explore →
+      </a>
+    </div>
+
+
+    <!-- LIMITED DROPS -->
+    <div class="feature-card">
+      <div class="card-icon">✧</div>
+      <div class="card-number">02</div>
+
+      <h3>Limited Drops</h3>
+
+      <p>
+        Small collections made in limited quantities,
+        created for the people who find them before
+        they're gone.
+      </p>
+
+      <a href="limited-drops.html" class="card-link">
+        Discover →
+      </a>
+    </div>
+
+
+    <!-- COLLECTIONS -->
+    <div class="feature-card">
+      <div class="card-icon">♡</div>
+      <div class="card-number">03</div>
+
+      <h3>Collections</h3>
+
+      <p>
+        Explore pieces designed to belong together,
+        from everyday favorites to statement details.
+      </p>
+
+      <a href="collections.html" class="card-link">
+        View →
+      </a>
+    </div>
+
+  </div>
+
+</section>
 
     <!-- ===== ABOUT ===== -->
 
