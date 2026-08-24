@@ -42,7 +42,10 @@
       color: inherit;
     }
 
-    button {
+    button,
+    input,
+    textarea,
+    select {
       font: inherit;
     }
 
@@ -66,12 +69,6 @@
       animation: goldShimmer 4s linear infinite;
     }
 
-    @keyframes goldShimmer {
-      to {
-        background-position: 250% center;
-      }
-    }
-
     .gold-line {
       width: 180px;
       height: 2px;
@@ -85,6 +82,12 @@
         transparent
       );
       box-shadow: 0 0 10px rgba(216, 179, 77, 0.35);
+    }
+
+    @keyframes goldShimmer {
+      to {
+        background-position: 250% center;
+      }
     }
 
     /* ===== NAVIGATION ===== */
@@ -113,7 +116,7 @@
 
     .navbar a {
       text-decoration: none;
-      font-size: 10px;
+      font-size: 11px;
       font-weight: 600;
       letter-spacing: 2px;
       transition: 0.25s ease;
@@ -130,6 +133,7 @@
       transform: translateX(-50%);
       font-family: Georgia, serif;
       font-size: 30px;
+      font-weight: normal;
       letter-spacing: 5px;
       text-decoration: none;
     }
@@ -175,10 +179,23 @@
       padding: 80px 20px 100px;
       position: relative;
       overflow: hidden;
+
       background:
-        radial-gradient(circle at 12% 20%, rgba(248, 220, 232, 0.75), transparent 29%),
-        radial-gradient(circle at 88% 22%, rgba(233, 221, 245, 0.78), transparent 31%),
-        radial-gradient(circle at 50% 100%, rgba(248, 231, 162, 0.14), transparent 28%),
+        radial-gradient(
+          circle at 12% 20%,
+          rgba(248, 220, 232, 0.75),
+          transparent 29%
+        ),
+        radial-gradient(
+          circle at 88% 22%,
+          rgba(233, 221, 245, 0.78),
+          transparent 31%
+        ),
+        radial-gradient(
+          circle at 50% 100%,
+          rgba(248, 231, 162, 0.14),
+          transparent 28%
+        ),
         var(--cream);
     }
 
@@ -255,6 +272,7 @@
       border-color: var(--gold);
       color: var(--navy);
       transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(216, 179, 77, 0.2);
     }
 
     .outline-button {
@@ -265,9 +283,132 @@
     .outline-button:hover {
       background: var(--navy);
       color: white;
+      transform: translateY(-2px);
     }
 
-    /* ===== ABOUT ===== */
+    /* ===== GENERAL ===== */
+
+    section {
+      scroll-margin-top: 90px;
+    }
+
+    .section-heading {
+      text-align: center;
+      padding: 100px 20px 45px;
+    }
+
+    .section-heading .mini {
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #9a7d96;
+      margin-bottom: 13px;
+    }
+
+    .section-heading h2 {
+      font-family: Georgia, serif;
+      font-weight: normal;
+      font-size: clamp(40px, 6vw, 64px);
+    }
+
+    .section-heading p {
+      max-width: 600px;
+      margin: 18px auto 0;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 14px;
+    }
+
+    /* ===== HOME FEATURE CARDS ===== */
+
+    .features {
+      padding-bottom: 100px;
+      background: var(--purple-soft);
+    }
+
+    .feature-grid {
+      width: 86%;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .feature-card {
+      min-height: 390px;
+      padding: 45px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(23, 35, 63, 0.08);
+      transition: 0.35s ease;
+    }
+
+    .feature-card:nth-child(1) {
+      background: linear-gradient(145deg, #f9dce8, #f0dff4);
+    }
+
+    .feature-card:nth-child(2) {
+      background: linear-gradient(145deg, #e9e0f5, #f6d8e6);
+    }
+
+    .feature-card:nth-child(3) {
+      background: linear-gradient(145deg, #f7e6d2, #f0dff0);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow);
+    }
+
+    .card-number {
+      position: absolute;
+      top: 25px;
+      right: 28px;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: rgba(23, 35, 63, 0.45);
+    }
+
+    .card-icon {
+      position: absolute;
+      top: 34px;
+      left: 32px;
+      font-size: 38px;
+      color: var(--gold);
+      text-shadow: 0 0 10px rgba(216, 179, 77, 0.5);
+    }
+
+    .feature-card h3 {
+      font-family: Georgia, serif;
+      font-size: 34px;
+      font-weight: normal;
+      margin-bottom: 13px;
+    }
+
+    .feature-card p {
+      font-size: 13px;
+      line-height: 1.8;
+      color: #4c5366;
+      max-width: 280px;
+    }
+
+    .card-link {
+      margin-top: 24px;
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .card-link:hover {
+      color: var(--gold);
+    }
+
+    /* ===== STORY / ABOUT ===== */
 
     .story {
       background: var(--navy);
@@ -284,6 +425,7 @@
       position: absolute;
       color: var(--gold-light);
       opacity: 0.75;
+      text-shadow: 0 0 12px rgba(216, 179, 77, 0.6);
     }
 
     .story::before {
@@ -314,8 +456,8 @@
     }
 
     .story .outline-button {
-      border-color: var(--cream);
       color: var(--cream);
+      border-color: var(--cream);
     }
 
     .story .outline-button:hover {
@@ -328,33 +470,6 @@
     .faq-section {
       padding-bottom: 105px;
       background: var(--purple-soft);
-    }
-
-    .section-heading {
-      text-align: center;
-      padding: 100px 20px 45px;
-    }
-
-    .section-heading .mini {
-      font-size: 10px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: #9a7d96;
-      margin-bottom: 13px;
-    }
-
-    .section-heading h2 {
-      font-family: Georgia, serif;
-      font-weight: normal;
-      font-size: clamp(40px, 6vw, 64px);
-    }
-
-    .section-heading p {
-      max-width: 600px;
-      margin: 18px auto 0;
-      color: var(--muted);
-      line-height: 1.8;
-      font-size: 14px;
     }
 
     .faq-container {
@@ -574,29 +689,36 @@
     /* ===== MOBILE ===== */
 
     @media (max-width: 850px) {
+
+      .feature-grid,
       .contact-grid {
         grid-template-columns: 1fr;
+      }
+
+      .feature-card {
+        min-height: 330px;
       }
     }
 
     @media (max-width: 650px) {
+
       .navbar {
         min-height: 65px;
-        padding: 0 15px;
+        padding: 0 18px;
       }
 
       .nav-left,
       .nav-right {
-        gap: 9px;
+        gap: 10px;
       }
 
       .navbar .nav-link {
-        font-size: 7px;
+        font-size: 8px;
         letter-spacing: 1px;
       }
 
       .logo {
-        font-size: 23px;
+        font-size: 24px;
       }
 
       .hero {
@@ -619,6 +741,10 @@
         letter-spacing: 3px;
       }
 
+      .feature-grid {
+        width: 90%;
+      }
+
       .faq-container {
         width: 88%;
       }
@@ -631,124 +757,34 @@
         flex-direction: column;
         gap: 18px;
       }
-    }/* ===== L&L FEATURES ===== */
-
-.features {
-  padding-bottom: 100px;
-  background: var(--purple-soft);
-}
-
-.feature-grid {
-  width: 86%;
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
-}
-
-.feature-card {
-  min-height: 390px;
-  padding: 45px 32px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  position: relative;
-  overflow: hidden;
-  border: 1px solid rgba(23, 35, 63, 0.08);
-  transition: 0.35s ease;
-}
-
-.feature-card:nth-child(1) {
-  background: linear-gradient(145deg, #f9dce8, #f0dff4);
-}
-
-.feature-card:nth-child(2) {
-  background: linear-gradient(145deg, #e9e0f5, #f6d8e6);
-}
-
-.feature-card:nth-child(3) {
-  background: linear-gradient(145deg, #f7e6d2, #f0dff0);
-}
-
-.feature-card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow);
-}
-
-.card-number {
-  position: absolute;
-  top: 25px;
-  right: 28px;
-  font-family: Georgia, serif;
-  font-size: 20px;
-  color: rgba(23, 35, 63, 0.45);
-}
-
-.card-icon {
-  position: absolute;
-  top: 34px;
-  left: 32px;
-  font-size: 38px;
-  color: var(--gold);
-  text-shadow: 0 0 10px rgba(216, 179, 77, 0.5);
-}
-
-.feature-card h3 {
-  font-family: Georgia, serif;
-  font-size: 34px;
-  font-weight: normal;
-  margin-bottom: 13px;
-}
-
-.feature-card p {
-  font-size: 13px;
-  line-height: 1.8;
-  color: #4c5366;
-  max-width: 280px;
-}
-
-.card-link {
-  margin-top: 24px;
-  text-decoration: none;
-  font-size: 11px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-}
-
-.card-link:hover {
-  color: var(--gold);
-}
-
-@media (max-width: 850px) {
-  .feature-grid {
-    grid-template-columns: 1fr;
-  }
-}
+    }
   </style>
 </head>
 
 <body>
 
-<!-- ===== NAVIGATION ===== -->
+  <!-- ===== NAVIGATION ===== -->
 
-<nav class="navbar">
-  <div class="nav-left">
-    <a class="nav-link" href="#shop">SHOP</a>
-    <a class="nav-link" href="#custom">CUSTOM</a>
-  </div>
+  <nav class="navbar">
 
-  <a href="#home" class="logo gold-text">L&L</a>
+    <div class="nav-left">
+      <a class="nav-link" href="#shop">SHOP</a>
+      <a class="nav-link" href="#custom">CUSTOM</a>
+    </div>
 
-  <div class="nav-right">
-    <a class="nav-link" href="#about">ABOUT</a>
-    <a class="nav-link" href="#contact">CONTACT</a>
+    <a href="#home" class="logo gold-text">L&L</a>
 
-    <button class="cart-button" onclick="openCart()">
-      🛒 <span class="cart-count" id="cartCount">0</span>
-    </button>
-  </div>
-</nav>
+    <div class="nav-right">
+      <a class="nav-link" href="#about">ABOUT</a>
+      <a class="nav-link" href="#contact">CONTACT</a>
+
+      <button class="cart-button" onclick="openCart()">
+        🛒 <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>
+
+  </nav>
+
 
   <main>
 
@@ -770,99 +806,148 @@
           Made to be yours.
         </div>
 
+        <!-- SHOP NOW -->
+
         <a href="collections.html" class="primary-button">
-          Explore
+          Shop Now
         </a>
 
       </div>
 
     </section>
-<!-- ===== L&L FEATURES ===== -->
-
-<section class="features">
-
-  <div class="section-heading">
-    <div class="mini">The L&L Experience</div>
-    <h2>Find what feels like you.</h2>
-  </div>
-
-  <div class="feature-grid">
-
-    <!-- CUSTOMIZE -->
-    <div class="feature-card">
-      <div class="card-icon">✦</div>
-      <div class="card-number">01</div>
-
-      <h3>Customize</h3>
-
-      <p>
-        Create something that feels completely yours.
-        Choose your details, your style, and the little
-        things that make your piece special.
-      </p>
-
-      <a href="custom.html" class="card-link">
-        Explore →
-      </a>
-    </div>
 
 
-    <!-- LIMITED DROPS -->
-    <div class="feature-card">
-      <div class="card-icon">✧</div>
-      <div class="card-number">02</div>
+    <!-- ===== CUSTOMIZE / LIMITED DROPS / COLLECTIONS ===== -->
 
-      <h3>Limited Drops</h3>
+    <section class="features">
 
-      <p>
-        Small collections made in limited quantities,
-        created for the people who find them before
-        they're gone.
-      </p>
+      <div class="section-heading">
 
-      <a href="limited-drops.html" class="card-link">
-        Discover →
-      </a>
-    </div>
+        <div class="mini">
+          The L&L Experience
+        </div>
+
+        <h2>
+          Find what feels like you.
+        </h2>
+
+      </div>
 
 
-    <!-- COLLECTIONS -->
-    <div class="feature-card">
-      <div class="card-icon">♡</div>
-      <div class="card-number">03</div>
+      <div class="feature-grid">
 
-      <h3>Collections</h3>
+        <!-- CUSTOMIZE -->
 
-      <p>
-        Explore pieces designed to belong together,
-        from everyday favorites to statement details.
-      </p>
+        <div class="feature-card">
 
-      <a href="collections.html" class="card-link">
-        View →
-      </a>
-    </div>
+          <div class="card-icon">
+            ✦
+          </div>
 
-  </div>
+          <div class="card-number">
+            01
+          </div>
 
-</section>
+          <h3>
+            Customize
+          </h3>
+
+          <p>
+            Create something that feels completely yours.
+            Choose your details, your style, and the little
+            things that make your piece special.
+          </p>
+
+          <a href="custom.html" class="card-link">
+            Explore →
+          </a>
+
+        </div>
+
+
+        <!-- LIMITED DROPS -->
+
+        <div class="feature-card">
+
+          <div class="card-icon">
+            ✧
+          </div>
+
+          <div class="card-number">
+            02
+          </div>
+
+          <h3>
+            Limited Drops
+          </h3>
+
+          <p>
+            Small collections made in limited quantities,
+            created for the people who find them before
+            they're gone.
+          </p>
+
+          <a href="limited-drops.html" class="card-link">
+            Discover →
+          </a>
+
+        </div>
+
+
+        <!-- COLLECTIONS -->
+
+        <div class="feature-card">
+
+          <div class="card-icon">
+            ♡
+          </div>
+
+          <div class="card-number">
+            03
+          </div>
+
+          <h3>
+            Collections
+          </h3>
+
+          <p>
+            Explore pieces designed to belong together,
+            from everyday favorites to statement details.
+          </p>
+
+          <a href="collections.html" class="card-link">
+            View →
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
 
     <!-- ===== ABOUT ===== -->
 
     <section class="story" id="about">
 
-      <h2>Make it yours.</h2>
+      <h2>
+        Make it yours.
+      </h2>
 
       <p>
         L&L is about creating jewelry that feels personal.
-        Pieces designed with little details that make them feel
-        like they were made just for you.
+        Pieces designed with little details that make them
+        feel like they were made just for you.
+        From customizable pieces to limited drops and
+        carefully created collections, every detail is chosen
+        to make your jewelry feel special, individual,
+        and completely yours.
       </p>
 
       <p>
-        From customizable pieces to limited drops and carefully
-        created collections, every detail is chosen to make your
-        jewelry feel special, individual, and completely yours.
+        Laila and Leen created L&L to bring together
+        simple designs, unique ideas, and pieces you
+        won't find anywhere else.
       </p>
 
       <a href="collections.html" class="outline-button">
@@ -882,7 +967,9 @@
           Need to know?
         </div>
 
-        <h2>FAQs</h2>
+        <h2>
+          FAQs
+        </h2>
 
       </div>
 
@@ -890,42 +977,59 @@
       <div class="faq-container">
 
         <details>
-          <summary>Are L&L pieces customizable?</summary>
+
+          <summary>
+            Are L&L pieces customizable?
+          </summary>
 
           <p>
-            Yes! Our customizable pieces are designed so you can
-            choose details that make them feel like your own.
+            Yes! Our customizable pieces are designed
+            so you can choose details that make them
+            feel like your own.
           </p>
+
         </details>
 
 
         <details>
-          <summary>Will limited drops come back?</summary>
+
+          <summary>
+            Will limited drops come back?
+          </summary>
 
           <p>
             Limited drops are released in small quantities,
             so once a drop sells out, it may not return.
           </p>
+
         </details>
 
 
         <details>
-          <summary>Where can I see new releases?</summary>
+
+          <summary>
+            Where can I see new releases?
+          </summary>
 
           <p>
             Follow our Instagram and TikTok for new drops,
             updates, behind-the-scenes moments, and more.
           </p>
+
         </details>
 
 
         <details>
-          <summary>How do I contact L&L?</summary>
+
+          <summary>
+            How do I contact L&L?
+          </summary>
 
           <p>
             You can reach out through our social media pages.
             More contact options can be added later.
           </p>
+
         </details>
 
       </div>
@@ -943,11 +1047,13 @@
           Let's talk
         </div>
 
-        <h2>Contact L&L.</h2>
+        <h2>
+          Contact L&L.
+        </h2>
 
         <p>
-          Follow us or reach out with questions, ideas,
-          and custom requests.
+          Follow us or reach out with questions,
+          ideas, and custom requests.
         </p>
 
       </div>
@@ -957,15 +1063,18 @@
 
         <div class="contact-card">
 
-          <div class="icon">◎</div>
+          <div class="icon">
+            ◎
+          </div>
 
-          <h3>Instagram</h3>
+          <h3>
+            Instagram
+          </h3>
 
           <p>
             <a
               href="https://www.instagram.com/lailaandleenjewelry/"
-              target="_blank"
-            >
+              target="_blank">
               Follow @lailaandleenjewelry
             </a>
           </p>
@@ -975,15 +1084,18 @@
 
         <div class="contact-card">
 
-          <div class="icon">♪</div>
+          <div class="icon">
+            ♪
+          </div>
 
-          <h3>TikTok</h3>
+          <h3>
+            TikTok
+          </h3>
 
           <p>
             <a
               href="https://www.tiktok.com/@ll.jewelry5"
-              target="_blank"
-            >
+              target="_blank">
               Follow @ll.jewelry5
             </a>
           </p>
@@ -993,12 +1105,17 @@
 
         <div class="contact-card">
 
-          <div class="icon">✉</div>
+          <div class="icon">
+            ✉
+          </div>
 
-          <h3>Custom</h3>
+          <h3>
+            Custom
+          </h3>
 
           <p>
-            Create a custom piece using our customization page.
+            Visit our customization page to tell us
+            what you want to create.
           </p>
 
         </div>
@@ -1015,34 +1132,30 @@
   <div
     class="cart-overlay"
     id="cartOverlay"
-    onclick="closeCart()"
-  ></div>
+    onclick="closeCart()">
+  </div>
 
 
   <aside
     class="cart-sidebar"
-    id="cartSidebar"
-  >
+    id="cartSidebar">
 
     <div class="cart-sidebar-header">
 
-      <h2>Your Cart</h2>
+      <h2>
+        Your Cart
+      </h2>
 
-      <button
-        onclick="closeCart()"
-        aria-label="Close cart"
-      >
+      <button onclick="closeCart()">
         ×
       </button>
 
     </div>
 
-
     <iframe
       src="cart.html"
-      class="cart-frame"
-      title="Shopping Cart"
-    ></iframe>
+      class="cart-frame">
+    </iframe>
 
   </aside>
 
@@ -1059,30 +1172,25 @@
       Laila and Leen
     </div>
 
-
     <div class="social-title">
       Follow L&L
     </div>
-
 
     <div class="social-links">
 
       <a
         href="https://www.instagram.com/lailaandleenjewelry/"
-        target="_blank"
-      >
+        target="_blank">
         Instagram
       </a>
 
       <a
         href="https://www.tiktok.com/@ll.jewelry5"
-        target="_blank"
-      >
+        target="_blank">
         TikTok
       </a>
 
     </div>
-
 
     <div class="copyright">
       © 2026 L&L. Made with love by Laila & Leen.
@@ -1121,25 +1229,15 @@
     }
 
 
-    /* ===== CART COUNT ===== */
+    /* ===== ESCAPE CLOSES CART ===== */
 
-    function updateCartCount() {
+    document.addEventListener("keydown", function(event) {
 
-      const cart =
-        JSON.parse(localStorage.getItem("llCart")) || [];
+      if (event.key === "Escape") {
+        closeCart();
+      }
 
-      let count = 0;
-
-      cart.forEach(item => {
-        count += Number(item.quantity) || 0;
-      });
-
-      document.getElementById("cartCount").textContent = count;
-
-    }
-
-
-    updateCartCount();
+    });
 
   </script>
 
