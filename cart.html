@@ -3,8 +3,195 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Shopping Cart — L&L</title>
+
+  <style>
+    :root {
+      --navy: #17233f;
+      --gold: #d8b34d;
+      --cream: #fffaf5;
+      --pink: #fff4f8;
+      --muted: #6d7180;
+      --border: rgba(23, 35, 63, 0.10);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--navy);
+      font-family: Arial, Helvetica, sans-serif;
+      padding: 25px;
+    }
+
+    h1 {
+      font-family: Georgia, serif;
+      font-weight: normal;
+      font-size: 34px;
+      margin-bottom: 25px;
+    }
+
+    .empty {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--muted);
+    }
+
+    .cart-item {
+      background: white;
+      border: 1px solid var(--border);
+      padding: 18px;
+      margin-bottom: 12px;
+    }
+
+    .cart-item-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .cart-item h2 {
+      font-family: Georgia, serif;
+      font-weight: normal;
+      font-size: 20px;
+    }
+
+    .price {
+      font-weight: bold;
+    }
+
+    .quantity {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 8px;
+    }
+
+    .remove {
+      margin-top: 12px;
+      border: 0;
+      background: transparent;
+      color: #9a7d96;
+      cursor: pointer;
+      font-size: 10px;
+      letter-spacing: 2px;
+    }
+
+    .total {
+      border-top: 1px solid var(--border);
+      margin-top: 25px;
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      font-family: Georgia, serif;
+      font-size: 23px;
+    }
+
+    .checkout {
+      width: 100%;
+      margin-top: 20px;
+      padding: 15px;
+      border: 1px solid var(--navy);
+      background: var(--navy);
+      color: white;
+      cursor: pointer;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-size: 11px;
+    }
+
+    .checkout:hover {
+      background: var(--gold);
+      color: var(--navy);
+      border-color: var(--gold);
+    }
+  </style>
 </head>
+
 <body>
+
+  <h1>Your Cart</h1>
+
+  <div id="cart"></div>
+
+  <script>
+    function getCart() {
+      return JSON.parse(localStorage.getItem("llCart")) || [];
+    }
+
+    function saveCart(cart) {
+      localStorage.setItem("llCart", JSON.stringify(cart));
+    }
+
+    function renderCart() {
+      const cartElement = document.getElementById("cart");
+      const cart = getCart();
+
+      if (cart.length === 0) {
+        cartElement.innerHTML = `
+          <div class="empty">
+            <p>Your cart is empty ✦</p>
+          </div>
+        `;
+        return;
+      }
+
+      let total = 0;
+
+      cartElement.innerHTML = cart.map((item, index) => {
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+
+        return `
+          <div class="cart-item">
+            <div class="cart-item-top">
+              <h2>${item.name}</h2>
+              <span class="price">EGP ${itemTotal}</span>
+            </div>
+
+            <div class="quantity">
+              Quantity: ${item.quantity}
+            </div>
+
+            <button class="remove" onclick="removeItem(${index})">
+              REMOVE
+            </button>
+          </div>
+        `;
+      }).join("");
+
+      cartElement.innerHTML += `
+        <div class="total">
+          <span>Total</span>
+          <span>EGP ${total}</span>
+        </div>
+
+        <button class="checkout" onclick="checkout()">
+          Checkout
+        </button>
+      `;
+    }
+
+    function removeItem(index) {
+      const cart = getCart();
+
+      cart.splice(index, 1);
+
+      saveCart(cart);
+
+      renderCart();
+    }
+
+    function checkout() {
+      alert("Checkout page coming next ✨");
+    }
+
+    renderCart();
+  </script>
+
 </body>
 </html>
